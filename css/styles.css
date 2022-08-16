@@ -204,28 +204,34 @@ h3.login{
   padding-bottom: 2rem;
   font-weight: bold;
 }
-form.login{
-  display: block;
-  padding-left: 30rem;
-  padding-right: 30rem;
-}
+
 button.login{
   background-color: #008cff;
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.4rem;
-  border-color:solid #03d7fc;
+  border-color:solid 2px #03a1fc;
   margin: 2rem;
-  position:relative;
-  left: 7rem;
-}
-@media (max-width: 600px){
-  form.login{
-    padding-left:10%;
-    padding-right: 10%;
-  }
+  margin-left:calc(15%);
+  position:absolute;
 }
 span.login-error{
 display:none;
 break-after: avoid-column;
+}
+section.login{
+  display:block;
+  padding: 2rem;
+  padding-left: calc(30%);
+  padding-right: calc(30%);
+  position: relative;
+}
+@media (max-width: 600px){
+  section.login{
+    padding-left: calc(10%);
+    padding-right: calc(10%);
+  }
+  button.login{
+    margin-left: calc(25%);
+  }
 }
