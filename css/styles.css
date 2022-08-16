@@ -201,6 +201,7 @@ img.login {
 h3.login{
   text-align: center;
   padding-top: 2rem;
+  padding-bottom: 2rem;
   font-weight: bold;
 }
 form.login{
@@ -213,14 +214,18 @@ button.login{
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.4rem;
-  border-color:solid #53C0FB;
+  border-color:solid #03d7fc;
   margin: 2rem;
   position:relative;
   left: 7rem;
 }
 @media (max-width: 600px){
   form.login{
-    padding-left:5%;
-    padding-right: 5%;
+    padding-left:10%;
+    padding-right: 10%;
   }
+}
+span.login-error{
+display:none;
+break-after: avoid-column;
 }

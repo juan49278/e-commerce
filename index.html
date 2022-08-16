@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="login.js"></script>
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -22,11 +23,11 @@
   <form class="login" action="post-login.html">
     <div class="form-floating mb-3">
       <input type="email" class="form-control" id="floatingInput" placeholder="E-mail">
-      <label for="floatingInput">Email</label>
+      <label for="floatingInput">E-mail</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Contrasena">
-      <label for="floatingPassword">Contrasena</label>
+      <label for="floatingPassword is-invalid"><span class="login">Contrasena</span><span class="login-error">Ingresa tu contrasena</span></label>
     </div>
     <div>
       <button class="login" type="submit">Ingresar</button>
