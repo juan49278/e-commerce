@@ -188,3 +188,39 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+img.login {
+  display:table-row;
+  position:relative;
+  left: calc(35%);
+}
+@media (max-width: 600px){
+  img.login{
+    left: 0vh;
+  }
+}
+h3.login{
+  text-align: center;
+  padding-top: 2rem;
+  font-weight: bold;
+}
+form.login{
+  display: block;
+  padding-left: 30rem;
+  padding-right: 30rem;
+}
+button.login{
+  background-color: #008cff;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border-color:solid #53C0FB;
+  margin: 2rem;
+  position:relative;
+  left: 7rem;
+}
+@media (max-width: 600px){
+  form.login{
+    padding-left:5%;
+    padding-right: 5%;
+  }
+}
