@@ -215,9 +215,9 @@ button.login{
   margin-left:calc(15%);
   position:absolute;
 }
-span.login-error{
-display:none;
-break-after: avoid-column;
+span.login-error:invalid-error + span.login:checked{
+display:block, display:block;
+
 }
 section.login{
   display:block;
