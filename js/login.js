@@ -10,10 +10,12 @@ function verified(e){
             i.classList.remove("is-invalid")
         }
     }); for(let i of inputs){
-        if(i.value.trim() == "")
+        if(i.password.trim() == "")
         return e.preventDefault(), document.querySelector("label.pass-invalid").style.display="block", 
-        document.querySelector("label.pass").style.display="none",
+        document.querySelector("label.pass").style.display="none";
+       if(i.email.trim() == "")
+       return e.preventDefault(),
         document.querySelector("label.email-invalid").style.display="block",
-        document.querySelector("label.email").style.display="none"
+        document.querySelector("label.email").style.display="none
     }
 }
