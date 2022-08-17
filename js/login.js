@@ -4,7 +4,6 @@ verifiedForm = addEventListener("submit",verified);
 function clean(array){
     array.forEach(input => {
         input.value = ""
-        input.checked = false
     });
 }
 function verified(e){
@@ -17,10 +16,10 @@ function verified(e){
             i.classList.remove("is-invalid")
         }
     }); for(let i of inputs){
-        if(i.password.trim() == "")
+        if(i.value.trim() == "")
         return e.preventDefault(), document.querySelector("label.pass-invalid").style.display="block", 
         document.querySelector("label.pass").style.display="none";
-       if(i.email.trim() == "")
+       if(i.value.trim() == "")
        return e.preventDefault(),
         document.querySelector("label.email-invalid").style.display="block",
         document.querySelector("label.email").style.display="none
