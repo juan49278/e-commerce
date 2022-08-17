@@ -215,9 +215,11 @@ button.login{
   margin-left:calc(15%);
   position:absolute;
 }
-span.login-error:invalid-error + span.login:checked{
-display:block, display:block;
-
+label.email-invalid{
+  display: none;
+}
+label.pass-invalid{
+  display: none;
 }
 section.login{
   display:block;
