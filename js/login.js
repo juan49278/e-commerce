@@ -1,11 +1,18 @@
 const verifiedForm = document.getElementById("login");
 verifiedForm = addEventListener("submit",verified);
 
+function clean(array){
+    array.forEach(input => {
+        input.value = ""
+        input.checked = false
+    });
+}
 function verified(e){
     let inputs = document.querySelectorAll("input");
     inputs.forEach(i => {
         if(i.value.trim() == ""){
             i.classList.add("is-invalid")
+            clean(array)
         } else {
             i.classList.remove("is-invalid")
         }
