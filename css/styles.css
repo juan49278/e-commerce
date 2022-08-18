@@ -191,6 +191,7 @@ a.custom-card:hover {
 img.login {
   display:table-row;
   position:relative;
+  justify-content: center;
   left: calc(35%);
 }
 @media (max-width: 600px){
@@ -206,11 +207,11 @@ h3.login{
 }
 
 button.login{
-  background-color: #003cff;
+  background-color: #0d6efd;
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.4rem;
-  border-color:solid 4px #03a1fc;
+  border-color:solid 4px #0398fc;
   margin: 2rem;
   margin-left:calc(5%);
   position:static;
