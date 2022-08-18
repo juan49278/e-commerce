@@ -20,23 +20,27 @@
   <img class="login" src="img/login.png" alt="login" width="400">
   <section class="login">
   <h3 class="login">Inicio de sesión</h3>
-  <form class="login" action="post-login.html">
-    <div class="form-floating mb-3">
-      <label for="floatingInput" class="email-invalid">Ingresá un E-mail</label>
-      <input type="email" class="form-control" id="floatingInput" placeholder="E-mail">
-      <label for="floatingInput" class="email">E-mail</label>
-    </div>
-    <div class="form-floating">
-      <label for="floatingPassword" class="pass-invalid">Ingresar una contraseña</label>
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" minlength="6" value="">
-      <label for="floatingPassword" class="pass">Contraseña</label>
+            <form class="form-floating" id="login" action="post-login.html">
+              <div class="container">
+                Email
+                <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Email">
+                <label for="floatingInput">Email</label>
+              </div>
+      <div class="form-floating is-invalid" id="floatingInputInvalid">Ingresa tu Email</div>
+      <div class="pass">Contraseña
+      <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" minlength="6">
+      <label for="floatingPassword">Contraseña</label>
+      <div class="form-floating is-invalid" id="floatingPasswordInvalid">Ingresa tu contraseña</div>
     </div>
     <div>
       <button class="login" type="submit">Ingresar</button>
-    </div>
-    </form>
-  </form>
+  </div>
+  </div>
+</div>
   </section>
+  </form>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

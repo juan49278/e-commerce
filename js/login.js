@@ -1,19 +1,23 @@
-const verifiedForm = document.getElementById("login");
-verifiedForm = addEventListener("submit",verified);
-
-function verified(e){
-    let inputs = document.querySelectorAll("input");
-    inputs.forEach(i => {
-        if(i.value.trim() == ""){
-            i.classList.add("is-invalid")
+let verifiedForm = document.querySelectorAll("form-floating");
+verifiedForm = addEventListener("submit", verified);
+    function verifiedEmail(e){
+        let email = document.getElementById('floatingInput')
+        if(email.value.trim() == ""){
+            email.classList.add("is-invalid"),document.getElementById('floatingInputInvalid').style.display='block',e.preventDefault()
         } else {
-            i.classList.remove("is-invalid")
+            email.classList.remove("is-invalid"),document.getElementById('floatingInputInvalid').style.display='none'
         }
-    }); for(let i of inputs){
-        if(i.value.trim() == "")
-        return e.preventDefault(), document.querySelector("label.pass-invalid").style.display="block", 
-        document.querySelector("label.pass").style.display="none",
-        document.querySelector("label.email-invalid").style.display="block",
-        document.querySelector("label.email").style.display="none
     }
-}
+    function verifiedPass(e){
+        let pass = document.getElementById('floatingPassword')
+        if(pass.value.trim() == ""){
+            pass.classList.add("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='block',e.preventDefault()
+        } else {
+            pass.classList.remove("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='none'
+        }
+    }
+    function verified(e){
+        if(verifiedEmail(e) || verifiedPass(e)){
+            return
+        }
+    }

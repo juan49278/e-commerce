@@ -206,20 +206,31 @@ h3.login{
 }
 
 button.login{
-  background-color: #008cff;
+  background-color: #003cff;
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.4rem;
-  border-color:solid 2px #03a1fc;
+  border-color:solid 4px #03a1fc;
   margin: 2rem;
-  margin-left:calc(15%);
-  position:absolute;
+  margin-left:calc(5%);
+  position:static;
 }
-label.email-invalid{
-  display: none;
+div.container{
+  text-align: center;
 }
-label.pass-invalid{
-  display: none;
+div#floatingPasswordInvalid{
+display: none;
+color: red;
+text-align: center;
+}
+div#floatingInputInvalid{
+  display:none;
+  color: red;
+  text-align: center;
+}
+div.row{
+  display: block;
+  margin:2rem;
 }
 section.login{
   display:block;
@@ -234,6 +245,6 @@ section.login{
     padding-right: calc(10%);
   }
   button.login{
-    margin-left: calc(25%);
+    margin-left: calc(10%);
   }
 }
