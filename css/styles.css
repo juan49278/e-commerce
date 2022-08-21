@@ -188,17 +188,6 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-img.login {
-  display:table-row;
-  position:relative;
-  justify-content: center;
-  left: calc(35%);
-}
-@media (max-width: 600px){
-  img.login{
-    left: 0vh;
-  }
-}
 h3.login{
   text-align: center;
   padding-top: 2rem;
