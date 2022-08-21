@@ -21,3 +21,6 @@ verifiedForm = addEventListener("submit", verified);
             return
         }
     }
+    function handleCredentialResponse(){
+        window.location.replace("https://juan49278.github.io/e-commerce/post-login.html");
+    }
