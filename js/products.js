@@ -1,18 +1,18 @@
-const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json'
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(url).then((result) =>{
-if(result.status = 'ok'){
-    productsArray = result.data.products
-    showData()
+let autos = async () => {
+    let url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+    let promise = await fetch(url);
+    let datos = await promise.json()
+    productsList = datos.products
+    showList(datos.products)
 }
-})
-})
-
-function showData(){
-    const prodContent = document.getElementById('products-container')
-    for(let product of productsArray){
-prodContent.innerHTML += `
-<div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+autos();
+    
+    
+    
+    function showList(){
+    for(let product of productsList){
+        document.getElementById('products-container').innerHTML += `
+<div class="list-group-item list-group-item-action cursor-active">
         <div class="row-3 d-flex">
             <div class="col-3">
             <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
