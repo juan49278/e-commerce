@@ -14,7 +14,7 @@ autos();
         document.getElementById('products-container').innerHTML += `
 <div class="list-group-item list-group-item-action cursor-active">
         <div class="row-3 d-flex">
-            <div class="col-3">
+            <div class="col-3 d-flex">
             <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
         </div>
         <div class="col">
