@@ -15,7 +15,7 @@ autos();
 <div class="list-group-item list-group-item-action cursor-active">
         <div class="row-3 d-flex">
             <div class="col-3 d-flex">
-            <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+            <img src="${product.image}"alt="${product.description}" class="img-thumbnail">
         </div>
         <div class="col">
             <div class="d-flex w-100 justify-content-between">
