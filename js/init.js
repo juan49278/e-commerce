@@ -39,3 +39,4 @@ let getJSONData = function(url){
         return result;
     });
 }
+document.getElementById('logedIn').innerHTML = localStorage.getItem('user')

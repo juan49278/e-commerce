@@ -1,3 +1,4 @@
+let usuario = document.getElementById("floatingInput")
 let verifiedForm = document.querySelectorAll("form-floating");
 verifiedForm = addEventListener("submit", verified);
     function verifiedEmail(e){
@@ -14,13 +15,15 @@ verifiedForm = addEventListener("submit", verified);
             pass.classList.add("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='block',e.preventDefault()
         } else {
             pass.classList.remove("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='none'
+            localStorage.setItem('user', usuario.value)
+            localStorage.getItem('user')
         }
     }
     function verified(e){
         if(verifiedEmail(e) || verifiedPass(e)){
-            return
         }
     }
     function handleCredentialResponse(){
         window.location.replace("https://juan49278.github.io/e-commerce/post-login.html");
     }
+   

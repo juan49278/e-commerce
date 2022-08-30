@@ -1,9 +1,12 @@
+let jsons = localStorage.getItem('catID') 
 let autos = async () => {
-    let url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+    let url = `https://japceibal.github.io/emercado-api/cats_products/${jsons}.json`;
     let promise = await fetch(url);
     let datos = await promise.json()
     productsList = datos.products
+    let allCats = datos.catName
     showList(datos.products)
+    document.getElementById('showCat').innerHTML = allCats
 }
 autos();
     
