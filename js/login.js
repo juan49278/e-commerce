@@ -15,8 +15,8 @@ verifiedForm = addEventListener("submit", verified);
             pass.classList.add("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='block',e.preventDefault()
         } else {
             pass.classList.remove("is-invalid"),document.getElementById('floatingPasswordInvalid').style.display='none'
-            localStorage.setItem('user', usuario.value)
-            localStorage.getItem('user')
+            localStorage.setItem('email', usuario.value)
+            localStorage.setItem('loggedIn', true)
         }
     }
     function verified(e){
@@ -24,6 +24,6 @@ verifiedForm = addEventListener("submit", verified);
         }
     }
     function handleCredentialResponse(){
-        window.location.replace("https://juan49278.github.io/e-commerce/post-login.html");
+        window.location.replace("https://juan49278.github.io/e-commerce/index.html");
     }
    

@@ -39,4 +39,19 @@ let getJSONData = function(url){
         return result;
     });
 }
-document.getElementById('logedIn').innerHTML = localStorage.getItem('user')
+document.getElementById('out').innerHTML = localStorage.getItem('email')
+
+document.getElementById('out').addEventListener('click', ()=>{
+  let resultado = window.confirm('¿Quieres cerrar sesion?')
+  if(resultado === true){
+  localStorage.removeItem('loggedIn')
+  window.location.replace('login.html')
+  sessionStorage.replace('login.html')
+} else {
+  window.location.reload()
+}
+})
+
+if(!localStorage.getItem('loggedIn')){
+window.location.replace('login.html')
+}
