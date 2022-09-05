@@ -44,11 +44,44 @@
     </div>
     <div class="container">
       <div class="row">
-      <div id="products-container">
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <input type="radio" class="btn-check" name="options" id="sortAsc">
+            <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-down-alt mr-1"></i>Menor</label>
+            <input type="radio" class="btn-check" name="options" id="sortDesc">
+            <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>Mayor</label>
+            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia</label>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-6 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Precio.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="filterPriceMinium">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="filterPriceMaxium">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+      <div class="list-group" id="products-container">
 
       </div>
     </div>
-    </div>
+  </div>
   </main>
   <footer class="text-muted">
     <div class="container">
