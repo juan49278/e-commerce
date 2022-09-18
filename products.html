@@ -56,27 +56,23 @@
         </div>
       </div>
       <div class="container">
-        <div class="col-md-3">
-          <input class="form-control me-2" type="search" placeholder="Busca" aria-label="Busca" id="busca">
-        </div>
-              <p class="font-weight-normal text-end my-2">Precio.</p>
-            </div>
-            <div class="col-md-3 float-end">
-              <input class="form-control" type="number" placeholder="min." id="filterPriceMinium">
-            </div>
-            <div class="col-md-3 float-end">
+        <div class="row">
+        <div class="col-md-5 mx-auto">
+          <p class="text-start">Busca tus Productos</p>
+          <input class="form-control me-2 mb-4" type="search" placeholder="Empieza a buscar..." aria-label="Busca" id="busca">
+          <p class="font-weight-normal text-start my-2">Precio.</p>
+          <input class="form-control" type="number" placeholder="min." id="filterPriceMinium">
               <input class="form-control" type="number" placeholder="máx." id="filterPriceMaxium">
-            </div>
-            <div class="col ms-4">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
                 <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
               </div>
             </div>
           </div>
-      <div class="row">
-        <div class="col">
-      <div class="list-group" id="products-container">
+      </div>
+  <div class="row">
+      <div class="col">
+        <div class="list-group" id="products-container">
 
       </div>
     </div>
