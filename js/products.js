@@ -63,7 +63,7 @@ document.getElementById("filterPrice").addEventListener("click", function(){
         if(((miniumPrice == undefined) || ((miniumPrice != undefined) && (product.cost >= miniumPrice))) &&
         ((maxiumPrice == undefined) || ((maxiumPrice != undefined) && (product.cost <= maxiumPrice)))){
         toAppened += `
-        <div class="products list-group-item list-group-item-action cursor-active">
+        <div onclick="idProducts(${product.id})" class="products list-group-item list-group-item-action cursor-active">
         <div class="row-3 d-flex">
             <div class="col-3">
                 <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -93,3 +93,34 @@ function sortAndShowProducts(criteria, elements){
     productsList = order[criteria]();
     showList();
 }
+
+function idProducts(id){
+    localStorage.setItem('items', id)
+    window.location.href = "product-info.html"
+}
+document.getElementById('busca').addEventListener('input', (e) => {
+    let search = e.target.value.split(' ');
+    const listaElementos = document.querySelectorAll('.products');
+
+    listaElementos.forEach((elements) => {
+        text = elements.innerText;
+        if(Object.keys(search).length > 1){
+            for(let i = 0; i < Object.keys(search).length ; i++){
+                if((text.toLowerCase().includes(search[i].toLowerCase())) && 
+                (search[i] != "")){
+                    elements.style.display = '';
+                    break;
+                }else{
+                    elements.style.display = 'none';
+                    break;
+                }
+            };
+        }else{
+            if(text.toLowerCase().includes(search[0].toLowerCase())){
+                elements.style.display = ''
+            }else{
+                elements.style.display = 'none'
+            };
+        };
+    })
+})

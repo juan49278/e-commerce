@@ -39,11 +39,42 @@
   </nav>
   <main class="pb-5">
       <div class="text-center p-4">
-        <h2>Productos</h2>
+        <h2>Detalles del Producto</h2>
         <p class="lead"></p>
       </div>
-    <div class="container">
-      </div>
+      <div class="container">
+        <div class="text-left pb-2 pt-4">
+          <h2 id = 'nameProduct' ></h2>
+        </div>
+        <hr>
+        <div class="pb-2" id="contentProduct">
+          
+        </div>
+        <hr>
+        <h4 class="text-center">Comentarios</h4>
+          <ul class="list-group" id="listComment">
+          </ul>
+            <ul class="list-group" id="lastComment">
+      </ul>
+        <div class="row g-2">
+          <h4 class="text-start">Comentar</h4>
+          <div class="col-md-6">
+            <p class="text-start" id="opinion">Tu opinión:</p>
+            <textarea class="form-control" id="descripcion" rows="3" placeholder="Escribe aquí tu opinión"></textarea>
+          </div>
+          <p class="text-start" id="tuPuntuacion">Tu puntuación:</p>
+          <div class="col-md-2">
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id='puntuacion'>
+              <option selected disabled>Calificación</option>
+              <option value ="1">1</option>
+              <option value ="2">2</option>
+              <option value ="3">3</option>
+              <option value ="4">4</option>
+              <option value ="5">5</option>
+            </select>
+            <button type="button" class="btn btn-primary mt-3" id="comentar">Enviar</button>
+          </div>
+        </div>  
     </div>
   </main>
   <footer class="text-muted">

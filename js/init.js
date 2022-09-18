@@ -39,7 +39,7 @@ let getJSONData = function(url){
         return result;
     });
 }
-document.getElementById('out').innerHTML = localStorage.getItem('email')
+out.innerHTML = localStorage.getItem('email')
 
 document.getElementById('out').addEventListener('click', ()=>{
   let resultado = window.confirm('¿Quieres cerrar sesion?')
