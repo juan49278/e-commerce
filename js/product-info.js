@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
             <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <div class="row pt-2 d-flex" id='containerImages'>
+            <div class="row-3 pt-2 d-flex" id='containerImages'>
             </div>
         </div>
     </div>
