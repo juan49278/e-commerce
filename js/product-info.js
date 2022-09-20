@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const {data: elements} = result;
             const { category, cost, 
                     currency, description, 
-                    images, name, soldCount } = elements
+                    images, name, soldCount, relatedProducts} = elements
+            /* let {id, name2, image} = relatedProducts */
             document.getElementById('nameProduct').innerHTML = name
+            /* document.getElementById('productoRelacionado').innerHTML += `<div onclick="${id}">`  */
             document.getElementById('contentProduct').innerHTML = `
             <h5><strong>Precio</strong></h5>
             <p>${currency} ${cost}</p>
@@ -30,20 +32,35 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Mostrar Imagenes del producto
             </button>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse col-lg-7 mx-auto" id="collapseExample">
         <div class="card card-body">
-            <div class="row-3 pt-2 d-flex" id='containerImages'>
-            </div>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="${images[0]}" class="d-flex img-fluid" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="${images[1]}" class="d-flex img-fluid" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="${images[2]}" class="d-flex img-fluid" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="${images[3]}" class="d-flex img-fluid" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> 
         </div>
     </div>
             `
-            for(let i = 0; i < images.length ; i++){
-                document.getElementById('containerImages').innerHTML += `
-                <div class="card gx-4 justify-content-between" style="width: 25%; border:none">
-                    <img src="${images[i]}" class="img-fluid" alt="...">
-                </div>
-                `
-            }
         })
     
     getJSONData(comentariosURL)
@@ -115,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelectorAll('.qualifiedID')[document.querySelectorAll('.qualifiedID').length -1]
                 .children[i].classList.add('checked');
             }
-            /* let comment = document.getElementById('lastComment').innerHTML;
-            localStorage.setItem(`saveComments`,comment); */
-            
         })
+        function idProducts(id){
+            localStorage.setItem('items', id)
+            window.location.href = "product-info.html"
+        }
