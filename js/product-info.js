@@ -15,10 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const {data: elements} = result;
             const { category, cost, 
                     currency, description, 
-                    images, name, soldCount, relatedProducts} = elements
-            /* let {id, name2, image} = relatedProducts */
+                    images, name, relatedProducts, soldCount} = elements
             document.getElementById('nameProduct').innerHTML = name
-            /* document.getElementById('productoRelacionado').innerHTML += `<div onclick="${id}">`  */
             document.getElementById('contentProduct').innerHTML = `
             <h5><strong>Precio</strong></h5>
             <p>${currency} ${cost}</p>
@@ -61,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </div>
             `
+            for(let relatedP of relatedProducts){
+                const {id, name,image} = relatedP
+                productoRelacionado.innerHTML += `<div onclick="idProducts(${id})" 
+                class="card m-3 list-group-item list-group-item-action cursor-active mx-auto" style="width:35%">
+                <img src="${image}" class="card-img-top" alt="....">
+                <p class="card-text">${name}</p>
+                </div>`
+            }
         })
     
     getJSONData(comentariosURL)
@@ -104,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.getElementById("comentar").addEventListener('click', () => {
-            let user = localStorage.getItem('email').split('@')[0]
+            let user = localStorage.getItem('email')
             let date = new Date();
             let timeFormat = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
             let dateFormat = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
