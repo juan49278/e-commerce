@@ -15,7 +15,7 @@ function show(){
         <td class="text-muted">${name}</td>
         <td class="text-muted">${currency} <span class="cost">${unitCost}</span></td>
         <td><input type="number" placeholder="${count}" min="0" class="col-7 col-md-3 count" oninput="calcular()"></td>
-        <td><strong>${currency} <span id="result"></strong></span></td>
+        <td><strong>${currency} <span id="result">${unitCost}</strong></span></td>
         </tr>`
     }
 }

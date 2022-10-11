@@ -79,16 +79,30 @@
               <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
               <label class="custom-control-label" for="standardradio">Standar de 12 a 15 días (5%)</label>
             </div>
-          </div>
-          <h5 class="text-start mt-5 mb-3">Dirección de envío</h5>
-          <div class="custom-control custom-input d-flex">
-          <label class="custom-control-input d-block" for="street">Calle</label>
-          <input id="street" type="text" name="directionSend" class="custom-control-input row-cols-4" required="">
-          <label class="custom-control-input" for="number">Numero</label>
-          <input type="number" name="number" id="number" class="custom-control-input row-cols-4" required=""><br>
-          </div>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <div class="row-3">
+      <div class="col">
+        <h5 class="text-start mt-5 mb-0 ms-5">Dirección de envío</h5>
+        <div class="row d-flex">
+         <div class="col-7 col-md-4 ms-0 text-start">
+           Calle
+           <input type="text" class="form-control" aria-label="street">
+         </div>
+         <div class="col-3 text-start">
+           Numero
+           <input type="number" class="form-control" aria-label="number" min="1">
+         </div>
+    </div>
+          <div class="col-7 col-md-4 ps-5 pe-md-2 pe-3 text-start">
+       Esquina
+          <input type="text" class="form-control" aria-label="round">
+       </div>
+      </div>
+    </div>
+  </div>
   </form>
   </main>
   <footer class="text-muted">
