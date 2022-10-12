@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('nameProduct').innerHTML = name
             document.getElementById('contentProduct').innerHTML = `
             <h5><strong>Precio</strong></h5>
-            <p>${currency} ${cost}</p>
+            <p id="currency">${currency} ${cost}</p>
             <h5><strong>Descripción</strong></h5>
-            <p>${description}</p>
+            <p id="description">${description}</p>
             <h5><strong>Categoría</strong></h5>
             <p>${category}</p>
             <h5><strong>Cantidad de vendidos</strong></h5>
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="${images[0]}" class="d-flex img-fluid" alt="...">
+            <img src="${images[0]}" class="d-flex img-fluid" alt="..." id="image">
           </div>
           <div class="carousel-item">
             <img src="${images[1]}" class="d-flex img-fluid" alt="...">

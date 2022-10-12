@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -51,8 +52,12 @@
       </div>
       <div class="container">
         <div class="text-left pb-2 pt-4">
-          <h2 id = 'nameProduct' ></h2>
+          <h2 id="nameProduct"></h2>
         </div>
+        <button class="btn btn-success" id="comprar">
+        <a href="#" style="text-decoration:none;color:white">Comprar</a></button>
+        <img src="img/add.png" alt="add" width="40" id="add" class="ms-3 cursor-active" onclick="mostrarAlert()">
+        <p class="d-inline-flex">Agregar al carrito</p>
         <hr>
         <div class="pb-2" id="contentProduct">
           
@@ -108,6 +113,28 @@
       <div></div>
     </div>
   </div>
+  <script>
+    function mostrarAlert(){
+    swal({
+        title: "Listo",
+        text: "El articulo fue agregado correctamente",
+        icon: "success",
+      })
+      addProducts()
+    }
+    function addProducts(){
+      let array = []
+      if(array != null){
+      let name = document.getElementById('nameProduct').innerText
+      let currency = document.getElementById('currency').innerText
+      let image = document.querySelector('img#image').src
+      let add = array.push(name, currency, image)
+      localStorage.setItem("productoAdded",JSON.stringify(array))
+      } else{
+          localStorage.setItem("productoAdded",JSON.stringify(array+[i]))
+        }
+      }
+  </script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
