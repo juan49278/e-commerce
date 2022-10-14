@@ -1,6 +1,7 @@
 let ids = localStorage.getItem('items')
 let URL = `https://japceibal.github.io/emercado-api/products/${ids}.json`
 let comentariosURL = `https://japceibal.github.io/emercado-api/products_comments/${ids}.json`
+let addCart = {};
 
 document.addEventListener('DOMContentLoaded', () => {
     let result= {}
@@ -13,9 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }})
     .then((result) => {
             const {data: elements} = result;
-            const { category, cost, 
+            const { id, category, cost, 
                     currency, description, 
                     images, name, relatedProducts, soldCount} = elements
+                    addCart = {id: id, name: name, unitCost:cost, currency, image: images[0]}
             document.getElementById('nameProduct').innerHTML = name
             document.getElementById('contentProduct').innerHTML = `
             <h5><strong>Precio</strong></h5>
@@ -143,3 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('items', id)
             window.location.href = "product-info.html"
         }
+        add.addEventListener('click',()=>{
+            let items = []
+          localStorage.getItem('productoAdded') == null ?
+          (items.push(addCart),
+          localStorage.setItem('productoAdded', JSON.stringify(items))):
+          (JSON.parse(localStorage.getItem('productoAdded')).forEach(e => {
+              items.push(e)
+          }),
+          items.find(element => element.id == addCart.id) == undefined ?
+          (items.push(addCart)):
+          localStorage.setItem('productoAdded', JSON.stringify(items))
+        )
+    })

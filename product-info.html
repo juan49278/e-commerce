@@ -120,24 +120,11 @@
         text: "El articulo fue agregado correctamente",
         icon: "success",
       })
-      addProducts()
     }
-    function addProducts(){
-      let array = []
-      if(array != null){
-      let name = document.getElementById('nameProduct').innerText
-      let currency = document.getElementById('currency').innerText
-      let image = document.querySelector('img#image').src
-      let add = array.push(name, currency, image)
-      localStorage.setItem("productoAdded",JSON.stringify(array))
-      } else{
-          localStorage.setItem("productoAdded",JSON.stringify(array+[i]))
-        }
-      }
   </script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
+  <script src="js/product-info.js" defer></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
