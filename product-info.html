@@ -54,11 +54,12 @@
         <div class="text-left pb-2 pt-4">
           <h2 id="nameProduct"></h2>
         </div>
-        <button class="btn btn-success" id="comprar">
-        <a href="#" style="text-decoration:none;color:white">Comprar</a></button>
-        <img src="img/add.png" alt="add" width="40" id="add" class="ms-3 cursor-active" onclick="mostrarAlert()">
-        <p class="d-inline-flex">Agregar al carrito</p>
-        <hr>
+        <div class="d-inline-block">
+        <button class="btn btn-success" id="comprar" onclick="mostrarAlert()">
+          <img src="img/add.png" alt="add" width="40" id="add" class="cursor-active"><a href="#" style="text-decoration:none;color:white">Agregar al carrito</a></button>
+          <img src="img/left.png" alt="back" width="30" class="ms-5"><p class="d-inline-flex"><a href="products.html" style="text-decoration:none;color:black">Volver al listado</a></p>
+        </div>
+          <hr>
         <div class="pb-2" id="contentProduct">
           
         </div>
@@ -90,7 +91,7 @@
         <hr>
         <div id="productoRelacionado">
           <h2 class="text-center pb-3">Productos relacionados</h2>
-          <h4>Te pueden interesar ...</h4>
+          <h4>Tambien te pueden interesar ...</h4>
 
         </div>  
     </div>

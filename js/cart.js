@@ -18,7 +18,7 @@ productoAdded
         <th><img src="${image}" class="img-fluid float-md-start cursor-active" width="125" onclick="idProducts(${id})"></th>
         <td class="text-muted">${name}</td>
         <td class="text-muted">${currency} <span class="cost">${unitCost}</span></td>
-        <td><input type="numeric" placeholder="1" value="1" min="1" class="form-control count" oninput="calcular()"></td>
+        <td><input type="number" placeholder="1" value="1" min="1" class="form-control count" oninput="calcular()"></td>
         <td><strong>${currency} <span class="result">${unitCost}</strong></span></td>
         </tr>`
     }
