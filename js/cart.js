@@ -29,12 +29,36 @@ function calcular(){
     let a = document.querySelectorAll('span.cost')[i].innerHTML;
     let b = document.querySelectorAll('input.count')[i].value;
     let c = b * a;
-    if(b===''){
-        return a === 1
+    if(b=== ''){
+        return a
+    } if(c === 0) {
+        alert('La cantidad no puede ser 0')
+        b.classList.add('is-invalid')
     }
-    document.querySelectorAll('span.result')[i].innerHTML = c
-    }
-    }
+    document.querySelectorAll('span.result')[i].innerHTML = c;
+}
+}
+addEventListener('input', ()=>{
+    for(let i=0; i< document.querySelectorAll('span.result').length; i++){
+        let d = document.querySelectorAll('span.result')[i].innerHTML
+        let e = document.querySelectorAll('span.result')[i+1].innerHTML
+        let f = parseInt(d) + parseInt(e)
+        productCosts.innerHTML = f
+let standarEnvio = document.getElementById('standardradio').checked
+let expressEnvio = document.getElementById('expressradio').checked
+let premiumEnvio = document.getElementById('premiumradio').checked
+if(standarEnvio === true){
+    comissionCost.innerHTML = 5
+} if(expressEnvio === true){
+    comissionCost.innerHTML = 7
+} else if(premiumEnvio === true){
+    comissionCost.innerHTML = 15
+}
+let percentage = parseInt(document.getElementById("productCosts").innerText) * parseInt(document.getElementById('comissionCost').innerText) / 100
+let totalCost = percentage + parseInt(document.getElementById("productCosts").innerText)
+document.getElementById('totalCost').innerHTML = totalCost
+}
+})
 function idProducts(id){
     localStorage.setItem('items', id)
     window.location.href = "product-info.html"

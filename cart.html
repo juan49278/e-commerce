@@ -44,6 +44,7 @@
     </div>
   </nav>
   <main>
+    <form novalidate>
     <div class="container">
       <h1 class="mt-5">Carrito de compras</h1>
       <div class="row">
@@ -69,20 +70,67 @@
         <h5 class="mb-3 mt-5 text-start">Tipo de envío</h5>
           <div class="d-block text-start">
             <div class="custom-control custom-radio">
-              <input id="premuimdradio" name="publicationType" type="radio" class="custom-control-input" checked=""
-                required="">
+              <input id="premiumradio" name="publicationShipping" type="radio" class="custom-control-input" checked=""
+                required="" value="15">
               <label class="custom-control-label" for="premiumradio">Premium de 2 a 5 días (15%)</label>
             </div>
             <div class="custom-control custom-radio">
-              <input id="expressradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <input id="expressradio" name="publicationShipping" type="radio" class="custom-control-input" required="" value="7">
               <label class="custom-control-label" for="premiumradio">Express de 5 a 8 días (7%)</label>
             </div>
             <div class="custom-control custom-radio">
-              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+              <input id="standardradio" name="publicationShipping" type="radio" class="custom-control-input" required="" value="5">
               <label class="custom-control-label" for="standardradio">Standar de 12 a 15 días (5%)</label>
             </div>
       </div>
+      <hr class="mb-4">
+          <h4 class="mb-3">Costos</h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="ms-0">Precio</h6>
+                <small class="text-muted">Unitario de los productos</small>
+              </div>
+              <span class="text-muted" id="productCosts">-</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="ms-0">Porcentaje</h6>
+                <small class="text-muted">Según el tipo de envio</small>
+              </div>
+              <span class="text-muted" id="comissionCost">-</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong id="totalCost">-</strong>
+            </li>
+          </ul>
     </div>
+    <h3>Pagar</h3>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Formas de pago
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Formas de pago</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Transferencia bancaria
+      <input type="number" name="target" id="plan1" class="form-control d-inline-flex">
+      <label for="plan1">Numero de cuenta:</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
   <div class="container">
     <div class="row-3">
@@ -106,7 +154,7 @@
       </div>
     </div>
   </div>
-  </form>
+</form>
   </main>
   <footer class="text-muted">
     <div class="container">
