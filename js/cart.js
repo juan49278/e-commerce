@@ -59,6 +59,20 @@ let totalCost = percentage + parseInt(document.getElementById("productCosts").in
 document.getElementById('totalCost').innerHTML = totalCost
 }
 })
+
+function modal(){
+    let check1 = document.getElementById('divAccount').getElementsByTagName('*')
+    let check2 = document.getElementById('divTarget').getElementsByTagName('*')
+    if(check1.checked === true){
+        for (check1 of check2) {
+            check2.disabled = true;
+        }
+    } if (check2.checked === true){
+        for (check1 of check2) {
+            check1.disabled = true;
+        }
+    }
+}
 function idProducts(id){
     localStorage.setItem('items', id)
     window.location.href = "product-info.html"
