@@ -23,56 +23,115 @@ productoAdded
         </tr>`
     }
 })
+
 function calcular(){
-    let campos = document.querySelectorAll('input');
+    let campos = document.querySelectorAll('input.count');
     for(let i=0; i < campos.length ;i ++){
     let a = document.querySelectorAll('span.cost')[i].innerHTML;
     let b = document.querySelectorAll('input.count')[i].value;
     let c = b * a;
     if(b=== ''){
-        return a
-    } if(c === 0) {
-        alert('La cantidad no puede ser 0')
-        b.classList.add('is-invalid')
+        return cantCart()
     }
-    document.querySelectorAll('span.result')[i].innerHTML = c;
-}
+    document.querySelectorAll('span.result')[i].innerHTML = c
+    !cantCart()
+    }
 }
 addEventListener('input', ()=>{
-    for(let i=0; i< document.querySelectorAll('span.result').length; i++){
-        let d = document.querySelectorAll('span.result')[i].innerHTML
-        let e = document.querySelectorAll('span.result')[i+1].innerHTML
-        let f = parseInt(d) + parseInt(e)
-        productCosts.innerHTML = f
-let standarEnvio = document.getElementById('standardradio').checked
-let expressEnvio = document.getElementById('expressradio').checked
-let premiumEnvio = document.getElementById('premiumradio').checked
-if(standarEnvio === true){
-    comissionCost.innerHTML = 5
-} if(expressEnvio === true){
-    comissionCost.innerHTML = 7
-} else if(premiumEnvio === true){
-    comissionCost.innerHTML = 15
+        let spanResults = document.querySelectorAll(`span.result`);
+        let resultado = 0;
+      
+        spanResults.forEach(function(spanResults) {
+        resultado += parseInt(spanResults.innerHTML) || 0;
+        })
+        productCosts.innerHTML = resultado
+let standarEnvio = document.getElementById('standardradio')
+let expressEnvio = document.getElementById('expressradio')
+let premiumEnvio = document.getElementById('premiumradio')
+if(standarEnvio.checked === true){
+    comissionCost.innerHTML = standarEnvio.value * parseInt(productCosts.innerText)
+} if(expressEnvio.checked === true){
+    let redondeo = expressEnvio.value * parseInt(productCosts.innerText)
+    comissionCost.innerHTML = Math.round(redondeo)
+} else if(premiumEnvio.checked === true){
+    comissionCost.innerHTML = premiumEnvio.value * parseInt(productCosts.innerText)
 }
-let percentage = parseInt(document.getElementById("productCosts").innerText) * parseInt(document.getElementById('comissionCost').innerText) / 100
-let totalCost = percentage + parseInt(document.getElementById("productCosts").innerText)
+
+let totalCost = parseInt(comissionCost.innerText) + parseInt(productCosts.innerText)
 document.getElementById('totalCost').innerHTML = totalCost
-}
 })
 
-function modal(){
-    let check1 = document.getElementById('divAccount').getElementsByTagName('*')
-    let check2 = document.getElementById('divTarget').getElementsByTagName('*')
-    if(check1.checked === true){
-        for (check1 of check2) {
-            check2.disabled = true;
-        }
-    } if (check2.checked === true){
-        for (check1 of check2) {
-            check1.disabled = true;
-        }
+function paymentMethod() {
+    if (document.getElementById('account').checked) {
+        document.querySelectorAll('.target').forEach(input => {
+            input.disabled = true
+        })
+        document.querySelectorAll('.account').forEach(input => {
+            input.disabled = false
+        })
+        methodBuy.innerHTML = 'Transferencia bancaria'
+    } else {
+        document.querySelectorAll('.target').forEach(input => {
+            input.disabled = false
+        })
+        document.querySelectorAll('.account').forEach(input => {
+            input.disabled = true
+        })
+        methodBuy.innerHTML = 'Tarjeta de crédito'
     }
 }
+
+function validationPayMethod() {
+    error = 0
+    document.querySelectorAll('input.target, input.account').forEach(input => {
+        if ((!input.disabled) && (input.value == '') && (input.value.length === 16)) {
+            method.classList.add('is-invalid')
+            error += 1
+        }
+    })
+    return (error == 0 ? (method.classList.remove('is-invalid'), true) :
+        false)
+}
+
+function cantCart() {
+    error = 0
+    document.querySelectorAll('input[type=number]').forEach(input => {
+        if ((input.value == "") || (parseInt(input.value) <= 0)) {
+            error += 1
+            input.classList.add('border', 'border-danger')
+        } else {
+            input.classList.remove('border', 'border-danger')
+        }
+    })
+    return error == 0 
+}
+
+function checkDirection() {
+    document.querySelectorAll('input[name=street]').forEach(input => {
+        if (input.value === "") {
+            input.classList.add('is-invalid')
+        } else {
+            input.classList.remove('is-invalid, border')
+        }
+    })
+}
+
+check1 = cantCart()
+check2 = checkDirection()
+check3 = validationPayMethod()
+btnBuy.addEventListener('submit',()=>{
+    if ((check1) && (check2) && (check3)) {
+        alertSuccess.innerHTML = `
+        <div class="alert alert-success alert-dismissible" role="alert" style='z-index: 100000'>
+            <div>Has comprado con éxito!</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        `
+    } else{
+        e.preventDefault()
+        e.stopPropagation()
+    }
+})
 function idProducts(id){
     localStorage.setItem('items', id)
     window.location.href = "product-info.html"
