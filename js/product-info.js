@@ -4,20 +4,21 @@ let comentariosURL = `https://japceibal.github.io/emercado-api/products_comments
 let addCart = {};
 
 document.addEventListener('DOMContentLoaded', () => {
-    let result= {}
+    let result = {}
     getJSONData(URL)
-    .then((response) =>{
-        if(response.status == 'ok'){
-            result = response
-            return result
-            
-        }})
-    .then((result) => {
-            const {data: elements} = result;
-            const { id, category, cost, 
-                    currency, description, 
-                    images, name, relatedProducts, soldCount} = elements
-                    addCart = {id: id, name: name, unitCost:cost, currency, image: images[0]}
+        .then((response) => {
+            if (response.status == 'ok') {
+                result = response
+                return result
+
+            }
+        })
+        .then((result) => {
+            const { data: elements } = result;
+            const { id, category, cost,
+                currency, description,
+                images, name, relatedProducts, soldCount } = elements
+            addCart = { id: id, name: name, unitCost: cost, currency, image: images[0] }
             document.getElementById('nameProduct').innerHTML = name
             document.getElementById('contentProduct').innerHTML = `
             <h5><strong>Precio</strong></h5>
@@ -61,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </div>
             `
-            for(let relatedP of relatedProducts){
-                const {id, name,image} = relatedP
+            for (let relatedP of relatedProducts) {
+                const { id, name, image } = relatedP
                 productoRelacionado.innerHTML += `<div onclick="idProducts(${id})" 
                 class="card m-3 list-group-item list-group-item-action cursor-active mx-auto" style="width:35%">
                 <img src="${image}" class="card-img-top" alt="....">
@@ -70,29 +71,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`
             }
         })
-    
+
     getJSONData(comentariosURL)
         .then((response) => {
-            if(response.status == 'ok'){
+            if (response.status == 'ok') {
                 result = response
                 return result;
-                }})
+            }
+        })
         .then((result) => {
-            const {data: comentarios} = result;
-            for(producto of comentarios){
-                const {dateTime, description,user} = producto
+            const { data: comentarios } = result;
+            for (producto of comentarios) {
+                const { dateTime, description, user } = producto
                 mostrarComentarios(user, dateTime, description);
             }
 
             document.querySelectorAll('.qualified').forEach((producto, index) => {
-                for(let i = 0; i < comentarios[index].score; i++){
+                for (let i = 0; i < comentarios[index].score; i++) {
                     producto.children[i].classList.add('checked')
                 }
-            })    
+            })
         })
-    })
-        function mostrarComentarios(user, dateTime, description){
-            document.getElementById('listComment').innerHTML += `
+})
+function mostrarComentarios(user, dateTime, description) {
+    document.getElementById('listComment').innerHTML += `
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 justify-content-between">
                     <div class="text-start">
@@ -109,17 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>   
             </li>
             `
-        }
+}
 
-        document.getElementById("comentar").addEventListener('click', () => {
-            let user = localStorage.getItem('email')
-            let date = new Date();
-            let timeFormat = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
-            let dateFormat = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
-            let dateTime = dateFormat+" "+timeFormat;	
-            const descripcion = document.getElementById('descripcion').value;
-            const puntuacion = document.getElementById('puntuacion').value;
-            document.getElementById('lastComment').innerHTML += `
+document.getElementById("comentar").addEventListener('click', () => {
+    let user = localStorage.getItem('email')
+    let date = new Date();
+    let timeFormat = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    let dateFormat = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    let dateTime = dateFormat + " " + timeFormat;
+    const descripcion = document.getElementById('descripcion').value;
+    const puntuacion = document.getElementById('puntuacion').value;
+    document.getElementById('lastComment').innerHTML += `
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 justify-content-between">
                     <div class="text-start">
@@ -136,33 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>   
             </li>
             `
-            for(let i = 0; i < puntuacion; i ++){
-                document.querySelectorAll('.qualifiedID')[document.querySelectorAll('.qualifiedID').length -1]
-                .children[i].classList.add('checked');
-            }
-        })
-        function idProducts(id){
-            localStorage.setItem('items', id)
-            window.location.href = "product-info.html"
-        }
-        add.addEventListener('click',()=>{
-            let items = []
-          localStorage.getItem('productoAdded') == null ?
-          (items.push(addCart),
-          localStorage.setItem('productoAdded', JSON.stringify(items))):
-          (JSON.parse(localStorage.getItem('productoAdded')).forEach(e => {
-              items.push(e)
-          }),
-          items.find(element => element.id == addCart.id) == undefined ?
-          (items.push(addCart)):
-          localStorage.setItem('productoAdded', JSON.stringify(items))
+    for (let i = 0; i < puntuacion; i++) {
+        document.querySelectorAll('.qualifiedID')[document.querySelectorAll('.qualifiedID').length - 1]
+            .children[i].classList.add('checked');
+    }
+})
+function idProducts(id) {
+    localStorage.setItem('items', id)
+    window.location.href = "product-info.html"
+}
+add.addEventListener('click', () => {
+    let items = []
+    localStorage.getItem('productoAdded') == null ?
+        (items.push(addCart),
+            localStorage.setItem('productoAdded', JSON.stringify(items))) :
+        (JSON.parse(localStorage.getItem('productoAdded')).forEach(e => {
+            items.push(e)
+        }),
+            items.find(element => element.id == addCart.id) == undefined ?
+                (items.push(addCart)) :
+                localStorage.setItem('productoAdded', JSON.stringify(items))
         )
-    })
+})
 const swal = require('sweetalert2')
-function mostrarAlert(){
+function mostrarAlert() {
     Swal.fire({
         title: "Listo",
         text: "El articulo fue agregado correctamente",
         icon: "success",
-      })
-    }
+    })
+}
