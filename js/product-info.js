@@ -158,3 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
           localStorage.setItem('productoAdded', JSON.stringify(items))
         )
     })
+const swal = require('sweetalert2')
+function mostrarAlert(){
+    Swal.fire({
+        title: "Listo",
+        text: "El articulo fue agregado correctamente",
+        icon: "success",
+      })
+    }

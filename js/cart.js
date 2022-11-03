@@ -84,7 +84,7 @@ function paymentMethod() {
 function validationPayMethod() {
     error = 0
     document.querySelectorAll('input.target, input.account').forEach(input => {
-        if ((!input.disabled) && (input.value == '') && (input.value.length === 16)) {
+        if ((!input.disabled) && (input.value == '')){
             method.classList.add('is-invalid')
             error += 1
         }
@@ -98,9 +98,9 @@ function cantCart() {
     document.querySelectorAll('input[type=number]').forEach(input => {
         if ((input.value == "") || (parseInt(input.value) <= 0)) {
             error += 1
-            input.classList.add('border', 'border-danger')
+            input.classList.add('border', 'border-danger', 'is-invalid')
         } else {
-            input.classList.remove('border', 'border-danger')
+            input.classList.remove('border', 'border-danger','is-invalid')
         }
     })
     return error == 0 
@@ -108,31 +108,29 @@ function cantCart() {
 
 function checkDirection() {
     document.querySelectorAll('input[name=street]').forEach(input => {
-        if (input.value === "") {
+        if (input.value ==="") {
             input.classList.add('is-invalid')
+            
         } else {
-            input.classList.remove('is-invalid, border')
+            input.classList.remove('is-invalid')
         }
     })
 }
-
-check1 = cantCart()
-check2 = checkDirection()
-check3 = validationPayMethod()
-btnBuy.addEventListener('submit',()=>{
-    if ((check1) && (check2) && (check3)) {
-        alertSuccess.innerHTML = `
-        <div class="alert alert-success alert-dismissible" role="alert" style='z-index: 100000'>
-            <div>Has comprado con éxito!</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        `
-    } else{
-        e.preventDefault()
-        e.stopPropagation()
+function finish(){
+    if (validationPayMethod() || checkDirection()){
+    showSuccess()
     }
-})
+}
 function idProducts(id){
     localStorage.setItem('items', id)
     window.location.href = "product-info.html"
 }
+const swal = require('sweetalert2');
+function showSuccess(){
+  Swal.fire({
+    title: 'Listo!',
+    text: 'Se realizo la compra correctamente',
+    icon : 'success'
+  })
+}
+

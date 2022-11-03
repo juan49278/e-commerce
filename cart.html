@@ -12,9 +12,6 @@
 </head>
 
 <body>
-  <div id="alertSuccess">
-
-  </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -63,13 +60,11 @@
                 </tr>
               </thead>
               <tbody class="table-group-divider" id="cart">
-
                 </tr>
               </tbody>
+              <tfoot>
+              </tfoot>
             </table>
-            <div class="invalid-feedback">
-              La cantidad del articulo no puede ser 0
-            </div>
             <hr>
         </div>
         <h5 class="mb-3 mt-5 text-start">Tipo de envío</h5>
@@ -119,16 +114,25 @@
         <div class="row d-flex">
          <div class="col-7 col-md-4 ms-0 text-start">
            Calle
-           <input type="text" class="form-control" name="street">
+           <input type="text" class="form-control" name="street" oninput="checkDirection()">
+           <div class="invalid-feedback">
+           Ingresa una calle
+         </div>
          </div>
          <div class="col-3 text-start">
            Numero
-           <input type="text" class="form-control" min="1" name="street">
+           <input type="text" class="form-control" min="1" name="street" oninput="checkDirection()">
+           <div class="invalid-feedback">
+           Ingresa un numero de puerta
+         </div>
          </div>
     </div>
           <div class="col-7 col-md-4 ps-5 pe-md-2 pe-3 text-start">
        Esquina
-          <input type="text" class="form-control" name="street">
+          <input type="text" class="form-control" oninput="checkDirection()" name="street">
+          <div class="invalid-feedback">
+           Ingresa una esquina
+         </div>
         </div>
       </div>
     </div>
@@ -139,13 +143,13 @@
       <a href="#" data-bs-toggle="modal" data-bs-target="#showModal">Seleccionar medio de pago.</a>
     </p>
     <div class="invalid-feedback">
-      Debe seleccionar un medio de pago.
+      Selecciona un medio de pago y verifica haber completado los campos correspondientes
     </div>
     <div class="modal fade" id="showModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="showModalLabel">Forma de pago</h1>
+            <h1 class="modal-title fs-5" id="showModalLabel">Formas de pago</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -180,18 +184,18 @@
             <hr>
             <div class="col-8">
               Número de cuenta
-              <input type="text" class="form-control account" placeholder="" aria-label="" id="bankAccount">
+              <input type="text" class="form-control account" placeholder="" aria-label="">
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="validationPayMethod()">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="validationPayMethod()">OK</button>
           </div>
         </div>
       </div>
     </div>
     <br>
     <br>
-    <button type="submit" class="btn btn-primary mt-2" id="btnBuy">Finalizar compra</button>
+    <button type="button" class="btn btn-primary mt-2" id="btnBuy"onclick="finish()">Finalizar compra</button>
   </div>
   </main>
   <footer class="text-muted">
@@ -213,6 +217,7 @@
     </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
