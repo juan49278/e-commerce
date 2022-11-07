@@ -2,6 +2,7 @@ let url = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 let standarEnvio = document.getElementById('standardradio')
 let expressEnvio = document.getElementById('expressradio')
 let premiumEnvio = document.getElementById('premiumradio')
+let total = document.getElementById('totalCost')
 
 addEventListener('DOMContentLoaded', async () => {
     let cartAdded = {}
