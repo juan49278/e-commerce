@@ -2,7 +2,6 @@ let url = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 let standarEnvio = document.getElementById('standardradio')
 let expressEnvio = document.getElementById('expressradio')
 let premiumEnvio = document.getElementById('premiumradio')
-let total = document.getElementById('totalCost')
 
 addEventListener('DOMContentLoaded', async () => {
     let cartAdded = {}
@@ -15,8 +14,8 @@ addEventListener('DOMContentLoaded', async () => {
     } else {
         cartAdded = JSON.parse(localStorage.getItem('productoAdded'))
     }
-    showCart(cartAdded)
-    cantCart()
+    showCart(cartAdded);
+    cantCart();
 })
 
 function showCart(list) {
@@ -24,12 +23,12 @@ function showCart(list) {
     for (product of list) {
         const { id, name, unitCost, currency, image } = product
         cart.innerHTML += `<tr>
-        <th><img src="${image}" class="img-fluid float-md-start cursor-active" width="125" onclick="idProducts(${id})"></th>
+        <th><img src="${image}" class="img-fluid float-md-start cursor-active" width="125" onclick="idProducts(${id})" data-bs-toggle="tooltip" data-bs-placement="top" title="${name}"></th>
         <td class="text-muted">${name}</td>
         <td class="text-muted">${currency} <span class="cost">${unitCost}</span></td>
         <td><input type="number" placeholder="1" name="unit" value="1" min="1" class="form-control count" oninput="calcular()"></td>
-        <td><strong>${currency} <span class="result">${unitCost}</strong></span></td>
-        <td><button <i onclick="deleteItem(${id})" class="fa fa-trash" aria-hidden="true"></i></button></td>
+        <td class="currency"><strong>${currency} <span class="result">${unitCost}</strong></span></td>
+        <td><button <i onclick="deleteItem(${id})" class="fa fa-trash" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto"></i></button></td>
         </tr>`
     }
 }
