@@ -28,12 +28,15 @@
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span id="show"></span>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"><span id="show"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" id="out" href="#">Cerrar sesion</a></li>
             </ul>
           </li>
@@ -44,7 +47,7 @@
   <main class="pb-5">
     <div class="text-center p-4">
       <h2>Productos</h2>
-      <p class="lead">Verás aquí todas los productos de la categoría  <span id="showCat"></span></p>
+      <p class="lead">Verás aquí todas los productos de la categoría <span id="showCat"></span></p>
     </div>
     <div class="container">
       <div class="row">
@@ -55,32 +58,34 @@
             <input type="radio" class="btn-check" name="options" id="sortDesc">
             <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>Mayor</label>
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia</label>
+            <label class="btn btn-light" for="sortByCount"><i
+                class="fas fa-sort-amount-down mr-1"></i>Relevancia</label>
           </div>
         </div>
       </div>
       <div class="container">
         <div class="row">
-        <div class="col-md-5 mx-auto">
-          <p class="text-start">Busca tus Productos</p>
-          <input class="form-control me-2 mb-4" type="search" placeholder="Empieza a buscar..." aria-label="Busca" id="busca">
-          <p class="font-weight-normal text-start my-2">Precio.</p>
-          <input class="form-control" type="number" placeholder="min." id="filterPriceMinium">
-              <input class="form-control" type="number" placeholder="máx." id="filterPriceMaxium">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
-              </div>
+          <div class="col-md-5 mx-auto">
+            <p class="text-start">Busca tus Productos</p>
+            <input class="form-control me-2 mb-4" type="search" placeholder="Empieza a buscar..." aria-label="Busca"
+              id="busca">
+            <p class="font-weight-normal text-start my-2">Precio.</p>
+            <input class="form-control" type="number" placeholder="min." id="filterPriceMinium">
+            <input class="form-control" type="number" placeholder="máx." id="filterPriceMaxium">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearFilter">Limpiar</button>
             </div>
           </div>
+        </div>
       </div>
-  <div class="row">
-      <div class="col">
-        <div class="list-group" id="products-container">
+      <div class="row">
+        <div class="col">
+          <div class="list-group" id="products-container">
 
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
   </main>
   <footer class="text-muted">
     <div class="container">

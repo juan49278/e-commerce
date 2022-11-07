@@ -111,97 +111,121 @@
       </div>
     </div>
     <div class="container">
-      <form>
+      <form class="needs-validation" id="formDirection" novalidate>
         <div class="row-3">
           <div class="col">
-            <h5 class="text-start mt-5 mb-0 ms-5">Dirección de envío</h5>
-            <div class="row d-flex">
-              <div class="col-7 col-md-4 ms-0 text-start">
-                Calle
-                <input type="text" class="form-control" name="street" oninput="checkDirection()">
-                <div class="invalid-feedback">
-                  Ingresa una calle
-                </div>
-              </div>
-              <div class="col-3 text-start">
-                Numero
-                <input type="text" class="form-control" min="1" name="street" oninput="checkDirection()">
-                <div class="invalid-feedback">
-                  Ingresa un numero de puerta
-                </div>
-              </div>
+            <h3 class="text-center">Donde enviar</h3>
+            <p>Elegir la direccion de envio</p>
+            <div class="invalid-feedback mt-3 mb-3" id="directionUncomplete">
+              Debes completar los campos
             </div>
-            <div class="col-7 col-md-4 ps-5 pe-md-2 pe-3 text-start">
-              Esquina
-              <input type="text" class="form-control" oninput="checkDirection()" name="street">
-              <div class="invalid-feedback">
-                Ingresa una esquina
-              </div>
-            </div>
-          </div>
-        </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Elije donde te lo enviamos
+            </button>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Direccion de envio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-7 text-start">
+                      Calle
+                      <input type="text" class="form-control" name="street" required>
+                      <div class="invalid-feedback">
+                        Ingresa una calle
+                      </div>
+                    </div>
+                    <div class="col-7 text-start">
+                      Numero
+                      <input type="number" class="form-control" min="1" name="street" required>
+                      <div class="invalid-feedback">
+                        Ingresa un numero de puerta
+                      </div>
+                    </div>
+                    <div class="col-7 text-start">
+                      Esquina
+                      <input type="text" class="form-control" name="street" required>
+                      <div class="invalid-feedback">
+                        Ingresa una esquina
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                      id="direction">Confirmar</button>
       </form>
-      <h3 class="mt-3">Pagar</h3>
-      <p class="mt-3" id="method">
-        <span class="pe-3" id="methodBuy">No se ha seleccionado</span>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#showModal">Seleccionar medio de pago.</a>
-      </p>
-      <div class="invalid-feedback">
-        Selecciona un medio de pago y verifica haber completado los campos correspondientes
-      </div>
-      <div class="modal fade" id="showModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="showModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="showModalLabel">Formas de pago</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <h3 class="mt-5">Pagar</h3>
+    <p class="mt-3" id="method">
+      <span class="pe-3" id="methodBuy">No se ha seleccionado</span>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#showModal">Seleccionar medio de pago.</a>
+    </p>
+    <div class="invalid-feedback">
+      Selecciona un medio de pago y verifica haber completado los campos correspondientes
+    </div>
+    <div class="modal fade" id="showModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="showModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="showModalLabel">Formas de pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" onclick="paymentMethod()" name="method" required>
+              <label class="form-check-label" for="creditcard">
+                Tarjeta de crédito
+              </label>
             </div>
-            <div class="modal-body">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" onclick="paymentMethod()" name="method">
-                <label class="form-check-label" for="creditcard">
-                  Tarjeta de crédito
-                </label>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-8">
-                  Número de tarjeta
-                  <input type="text" class="form-control target" placeholder="Digita tu tarjeta" aria-label="">
-                </div>
-                <div class="col-4">
-                  Código de seguridad
-                  <input type="text" class="form-control target" placeholder="CVV" aria-label="">
-                </div>
-                <div class="col-8 pt-3">
-                  Vencimiento
-                  <input type="text" class="form-control target" placeholder="MM/AA" aria-label="">
-                </div>
-              </div>
-              <hr>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" onclick="paymentMethod()" name="method" id="account">
-                <label class="form-check-label" for="account">
-                  Transferencia Bancaria
-                </label>
-              </div>
-              <hr>
+            <hr>
+            <div class="row">
               <div class="col-8">
-                Número de cuenta
-                <input type="text" class="form-control account" placeholder="" aria-label="">
+                Número de tarjeta
+                <input type="number" class="form-control target" placeholder="Todos los digitos de tu tarjeta"
+                  aria-label="">
+              </div>
+              <div class="col-4">
+                Código de seguridad
+                <input type="number" class="form-control target" placeholder="CVV" aria-label="">
+              </div>
+              <div class="col-8 pt-3">
+                Vencimiento
+                <input type="number" class="form-control target" placeholder="MM/AA" aria-label="">
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                onclick="validationPayMethod()">OK</button>
+            <hr>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" onclick="paymentMethod()" name="method" id="account"
+                required>
+              <label class="form-check-label" for="account">
+                Transferencia Bancaria
+              </label>
             </div>
+            <hr>
+            <div class="col-8">
+              Número de cuenta
+              <input type="number" class="form-control account" placeholder="" aria-label="">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+              onclick="validationPayMethod()">OK</button>
           </div>
         </div>
       </div>
-      <br>
-      <br>
-      <button type="button" class="btn btn-primary mt-2" id="btnBuy" onclick="finish()">Finalizar compra</button>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary mt-2" id="btnBuy" onclick="finish()">Finalizar compra</button>
     </div>
   </main>
   <footer class="text-muted">
