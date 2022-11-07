@@ -25,10 +25,10 @@ function showCart(list) {
         cart.innerHTML += `<tr>
         <th><img src="${image}" class="img-fluid float-md-start cursor-active" width="125" onclick="idProducts(${id})" data-bs-toggle="tooltip" data-bs-placement="top" title="${name}"></th>
         <td class="text-muted">${name}</td>
-        <td class="text-muted">${currency} <span class="cost">${unitCost}</span></td>
+        <td class="text-muted"><span class="money">${currency}</span> <span class="cost">${unitCost}</span></td>
         <td><input type="number" placeholder="1" name="unit" value="1" min="1" class="form-control count" oninput="calcular()"></td>
-        <td class="currency"><strong>${currency} <span class="result">${unitCost}</strong></span></td>
-        <td><button <i onclick="deleteItem(${id})" class="fa fa-trash" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto"></i></button></td>
+        <td class="currency"><strong>USD <span class="result">${unitCost}</strong></span></td>
+        <td><button <i onclick="deleteItem(${id}),calcular()" class="fa fa-trash" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar producto"></i></button></td>
         </tr>`
     }
 }
@@ -38,12 +38,18 @@ function calcular() {
     for (let i = 0; i < campos.length; i++) {
         let a = document.querySelectorAll('span.cost')[i].innerHTML;
         let b = document.querySelectorAll('input.count')[i].value;
-        let c = b * a;
+        if (document.querySelectorAll('span.money')[i].innerText == "UYU") {
+            let resultado = a / 40
+            let c = resultado.toFixed(2) * b
+            document.querySelectorAll('span.result')[i].innerHTML = c
+        } else {
+            let c = b * a;
+            document.querySelectorAll('span.result')[i].innerHTML = c
+        }
         if (b == 0) {
             cantCart()
         }
         !cantCart()
-        document.querySelectorAll('span.result')[i].innerHTML = c
     }
 }
 addEventListener('input', () => {
@@ -55,12 +61,14 @@ addEventListener('input', () => {
     })
     productCosts.innerHTML = resultado
     if (standarEnvio.checked) {
-        comissionCost.innerHTML = standarEnvio.value * parseInt(productCosts.innerText)
+        redondeo = standarEnvio.value * parseInt(productCosts.innerText)
+        comissionCost.innerHTML = redondeo.toFixed(2)
     } if (expressEnvio.checked) {
-        let redondeo = expressEnvio.value * parseInt(productCosts.innerText)
-        comissionCost.innerHTML = Math.round(redondeo)
+        redondeo = expressEnvio.value * parseInt(productCosts.innerText)
+        comissionCost.innerHTML = redondeo.toFixed(2)
     } else if (premiumEnvio.checked) {
-        comissionCost.innerHTML = premiumEnvio.value * parseInt(productCosts.innerText)
+        redondeo = premiumEnvio.value * parseInt(productCosts.innerText)
+        comissionCost.innerHTML = redondeo.toFixed(2)
     }
 
     let totalCost = parseInt(comissionCost.innerText) + parseInt(productCosts.innerText)
