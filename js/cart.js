@@ -3,20 +3,34 @@ let standarEnvio = document.getElementById('standardradio')
 let expressEnvio = document.getElementById('expressradio')
 let premiumEnvio = document.getElementById('premiumradio')
 let total = document.getElementById('totalCost')
+let div = document.getElementById('directionUncomplete')
+let div2 = document.getElementById('formDirection')
+let cant = function () {
+    let spans = document.querySelectorAll('input.count')
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].value == 0) {
+            showErrorCant();
+            return false
+        }
+        return true
+    }
+}
 
 addEventListener('DOMContentLoaded', async () => {
+    showSpinner()
     let cartAdded = {}
     if ((localStorage.getItem('productoAdded') == '[]') || (localStorage.getItem('productoAdded') == undefined)) {
         const response = await fetch(url)
         const data = await response.json()
         cartAdded = data.articles;
         localStorage.setItem('productoAdded', JSON.stringify(cartAdded));
-
     } else {
         cartAdded = JSON.parse(localStorage.getItem('productoAdded'))
     }
     showCart(cartAdded);
+    calcular()
     cantCart();
+    hideSpinner()
 })
 
 function showCart(list) {
@@ -47,7 +61,7 @@ function calcular() {
             let c = b * a;
             document.querySelectorAll('span.result')[i].innerHTML = c
         }
-        if (b == 0) {
+        if (b === 0) {
             cantCart()
         }
         !cantCart()
@@ -121,21 +135,25 @@ function cantCart() {
 }
 (() => {
     let forms = document.querySelectorAll('.needs-validation');
-    let div = document.getElementById('directionUncomplete')
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
-                    div.classList.add('d-block')
+                    div.classList.add('d-block');
                 } if (form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
-                    div.classList.remove('d-block')
+                    div.classList.remove('d-block');
+                    div2.classList.add('validate')
+                } else {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    div2.classList.remove('validate')
                 }
                 form.classList.add('was-validated');
-            }, false);
+            },);
         });
 })()
 
@@ -148,6 +166,7 @@ function deleteItem(id) {
         localStorage.setItem('productoAdded', JSON.stringify(listUpdate))
     }
     showCart(listUpdate)
+    calcular()
 }
 function showSuccess() {
     Swal.fire({
@@ -164,12 +183,29 @@ function showErrorCant() {
     })
 }
 
+function emptyCart() {
+    Swal.fire({
+        title: 'Info',
+        text: 'El carrito debe tener al menos un producto para poder realizar la compra',
+        icon: 'info'
+    })
+}
+function checkForm() {
+    Swal.fire({
+        title: 'Error',
+        text: 'Debes completar la direccion de envio',
+        icon: 'error'
+    })
+}
 function finish() {
     check1 = validationPayMethod();
-    check2 = document.getElementById('formDirection').noValidate
-    check3 = cantCart();
+    check2 = document.querySelector('form.validate').noValidate
+    check3 = cant()
     check4 = total.innerText == "0"
-    if ((check1) && (check2) && (!check4)) {
+    if (check4) {
+        emptyCart()
+    }
+    if ((check1) && (check2) && (check3) && (!check4)) {
         showSuccess()
     }
 }
