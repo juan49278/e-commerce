@@ -63,33 +63,55 @@
     </div>
   </nav>
   <main>
+    <form class="needs-validation" id="formProfile" novalidate>
   <div class="container">
     <div class="row d-flex justify-content-evenly">
       <h1 class="mt-5 ms-5 mb-3 text-start">Perfil</h1>
       <hr>
       <div class="col-5">
-        Primer nombre:
-        <input type="text" name="primerNombre" id="primerNombre" class="form-control mb-3">
-        Primer apellido:
-        <input type="text" name="primerApellido" id="primerApellido" class="form-control mb-3">
-        E-mail:
-        <input type="email" name="email" id="email" class="form-control">
+        <div>
+          Primer nombre:
+        <input type="text" name="profile" id="primerNombre" class="form-control mb-3" value="" required>
+        </div>
+        <div class="invalid-feedback">
+          Debes ingresar un nombre, es obligatorio
+        </div>
+        <div>
+          Primer apellido:
+          <input type="text" name="profile" id="primerApellido" class="form-control mb-3" value="" required>
+        </div>
+        <div class="invalid-feedback">
+          Debes ingresar el apellido, es obligatorio
+        </div>
+        <div>
+          E-mail:
+        <input type="email" name="profile" id="email" class="form-control" value="">
+        </div>
       </div>
       <div class="col-5">
-        Segundo nombre:
-        <input type="text" name="segundoNombre" id="segundoNombre" class="form-control mb-3">
-        Segundo apellido:
-        <input type="text" name="segundoApellido" id="segundoApellido" class="form-control mb-3">
-        Telefono:
-        <input type="number" name="telefono" id="telefono" class="form-control mb-5">
+        <div>
+          Segundo nombre:
+        <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="">
+        </div>
+        <div>
+          Segundo apellido:
+        <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="">
+        </div>
+        <div>
+          Telefono:
+        <input type="number" name="profile" id="telefono" class="form-control mb-5" value="" required>
+        </div>
+        <div class="invalid-feedback">
+          Debes ingresar un numero de telefono, es obligatorio
+        </div>
       </div>
       <hr class="mt-5 mb-3">
-      <button class="btn btn-primary col-md-2 col-7">
+      <button type="button" class="btn btn-primary col-md-2 col-7" id="save">
         Guardar cambios
       </button>
     </div>
   </div>
-
+</form>
   </main>
   <footer class="text-muted">
     <div class="container">
