@@ -29,57 +29,44 @@ addEventListener('DOMContentLoaded', () => {
         telefono.value = ""
     }
 })
-
-save.addEventListener('click', () => {
-    if(nombre() &&
-    apellido()&&
-    telephone() && nombre2()&& apellido2()){
-        alert('Guardado')
-    }
-})
-
 function nombre() {
-    if (primerNombre.value == "") {
-        primerNombre.classList.add('is-invalid')
-        return false
-    } else {
-        primerNombre.classList.remove('is-invalid')
-        primerNombre = localStorage.setItem("primerNombre", primerNombre.value)
-        return true
-    }
+    let primerNombre = document.getElementById('primerNombre').value
+    primerNombre = localStorage.setItem("primerNombre", primerNombre)
 }
 
 function apellido() {
-    if (primerApellido.value == "") {
-        primerApellido.classList.add('is-invalid')
-        return false
-    } else {
-        primerApellido.classList.remove('is-invalid')
-        primerApellido = localStorage.setItem('primerApellido', primerApellido.value)
-        return true
-    }
+    let primerApellido = document.getElementById('primerApellido').value
+    primerApellido = localStorage.setItem('primerApellido', primerApellido)
 }
 function telephone() {
-    if (telefono.value == "") {
-        telefono.classList.add('is-invalid')
-        return false
-    } else {
-        telefono.classList.remove('is-invalid')
-        telefono = localStorage.setItem('telefono', telefono.value)
-        return true
-    }
+    let telefono = document.getElementById('telefono').value
+    telefono = localStorage.setItem('telefono', telefono)
 }
 function nombre2(){
-    if (segundoNombre.value != "") {
-        segundoNombre = localStorage.setItem('segundoNombre', segundoNombre.value)
-        return true
-    }
-    return false
+    let segundoNombre = document.getElementById('segundoNombre').value
+    segundoNombre = localStorage.setItem('segundoNombre', segundoNombre)
 }
 function apellido2(){
-    if (segundoApellido != "") {
-        segundoApellido = localStorage.setItem('segundoApellido', segundoApellido.value)
-        return true
-    }
-    return false
+    let segundoApellido = document.getElementById('segundoApellido').value
+    segundoApellido = localStorage.setItem('segundoApellido', segundoApellido)
 }
+function check(){
+    input = document.querySelectorAll('input[name=profile]').forEach(input =>{
+        if(input.value !=""){
+            input.classList.remove('is-invalid')
+        } else{
+            input.classList.add('is-invalid')
+        }
+    })
+}
+function alertSuccess(){
+    if((primerNombre.value !="") && (primerApellido.value != "")&& (telefono.value !="")){
+        Swal.fire({
+            title: 'Listo!',
+            text: 'Los datos se actualizaron correctamente',
+            icon: 'success'
+        })
+    }
+}
+
+const swal = require ('sweetalert2');

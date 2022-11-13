@@ -65,7 +65,7 @@
     </div>
   </nav>
   <main>
-    <form class="needs-validation" id="formProfile" novalidate>
+    <form class="needs-validation" id="formProfile">
       <div class="container">
         <div class="row d-flex justify-content-evenly">
           <h1 class="mt-5 ms-5 mb-3 text-start">Perfil</h1>
@@ -73,16 +73,16 @@
           <div class="col-5">
             <div>
               Nombre: <strong class="text-danger">*</strong>
-              <input type="text" name="profile" id="primerNombre" class="form-control mb-3" value="" required>
+              <input type="text" name="profile" id="primerNombre" class="form-control mb-3 required" value="" required oninput="check()" onchange="nombre()">
               <div class="invalid-feedback">
-                Debes ingresar un nombre, el campo no puede estar vacio
+                Debes ingresar un nombre
               </div>
             </div>
             <div>
               Apellido: <strong class="text-danger">*</strong>
-              <input type="text" name="profile" id="primerApellido" class="form-control mb-3" value="" required>
+              <input type="text" name="profile" id="primerApellido" class="form-control mb-3 required" value="" required oninput="check()" onchange="apellido()">
               <div class="invalid-feedback">
-                Debes ingresar el apellido, el campo no puede estar vacio
+                Debes ingresar el apellido
               </div>
             </div>
             <div>
@@ -95,23 +95,23 @@
           <div class="col-5">
             <div>
               Segundo nombre:
-              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="">
+              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="" onchange="nombre2()">
             </div>
             <div>
               Segundo apellido:
-              <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="">
+              <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="" onchange="apellido2()">
             </div>
             <div>
               Telefono: <strong class="text-danger">*</strong>
-              <input type="number" name="profile" id="telefono" class="form-control mb-5" value="" required>
-            </div>
-            <div class="invalid-feedback">
-              Debes ingresar un numero de telefono, es obligatorio
+              <input type="number" name="profile" id="telefono" class="form-control mb-5 required" value="" required oninput="check()" onchange="telephone()">
+              <div class="invalid-feedback">
+                Debes ingresar un numero de telefono
+              </div>
             </div>
           </div>
          <p class="text-start">Info:<strong class="text-danger">*</strong> campos requeridos</p>
           <hr class="mt-5 mb-3">
-          <button type="button" class="btn btn-primary col-md-2 col-7" id="save">
+          <button type="button" class="btn btn-primary col-md-2 col-7" id="save" onclick="alertSuccess()">
             Guardar cambios
           </button>
         </div>
@@ -129,6 +129,7 @@
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
