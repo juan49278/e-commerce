@@ -50,8 +50,10 @@
               aria-expanded="false"><span id="show"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Mi carrito</a></li>
-              <li><a class="dropdown-item" href="my-profile.html"><i class="fa fa-user" aria-hidden="true"></i>  Mi perfil</a></li>
+              <li><a class="dropdown-item" href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Mi
+                  carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html"><i class="fa fa-user" aria-hidden="true"></i> Mi
+                  perfil</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -64,54 +66,57 @@
   </nav>
   <main>
     <form class="needs-validation" id="formProfile" novalidate>
-  <div class="container">
-    <div class="row d-flex justify-content-evenly">
-      <h1 class="mt-5 ms-5 mb-3 text-start">Perfil</h1>
-      <hr>
-      <div class="col-5">
-        <div>
-          Primer nombre:
-        <input type="text" name="profile" id="primerNombre" class="form-control mb-3" value="" required>
-        </div>
-        <div class="invalid-feedback">
-          Debes ingresar un nombre, es obligatorio
-        </div>
-        <div>
-          Primer apellido:
-          <input type="text" name="profile" id="primerApellido" class="form-control mb-3" value="" required>
-        </div>
-        <div class="invalid-feedback">
-          Debes ingresar el apellido, es obligatorio
-        </div>
-        <div>
-          E-mail:
-        <input type="email" name="profile" id="email" class="form-control" value="">
+      <div class="container">
+        <div class="row d-flex justify-content-evenly">
+          <h1 class="mt-5 ms-5 mb-3 text-start">Perfil</h1>
+          <hr>
+          <div class="col-5">
+            <div>
+              Nombre: <strong class="text-danger">*</strong>
+              <input type="text" name="profile" id="primerNombre" class="form-control mb-3" value="" required>
+              <div class="invalid-feedback">
+                Debes ingresar un nombre, el campo no puede estar vacio
+              </div>
+            </div>
+            <div>
+              Apellido: <strong class="text-danger">*</strong>
+              <input type="text" name="profile" id="primerApellido" class="form-control mb-3" value="" required>
+              <div class="invalid-feedback">
+                Debes ingresar el apellido, el campo no puede estar vacio
+              </div>
+            </div>
+            <div>
+              E-mail: <strong class="text-danger">*</strong>
+              <input type="email" name="profile" id="email" class="form-control" value="" disabled
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Si quieres cambiar de email, primero debes cerrar sesion e iniciar sesion nuevamente con el correo que desees">
+            </div>
+          </div>
+          <div class="col-5">
+            <div>
+              Segundo nombre:
+              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="">
+            </div>
+            <div>
+              Segundo apellido:
+              <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="">
+            </div>
+            <div>
+              Telefono: <strong class="text-danger">*</strong>
+              <input type="number" name="profile" id="telefono" class="form-control mb-5" value="" required>
+            </div>
+            <div class="invalid-feedback">
+              Debes ingresar un numero de telefono, es obligatorio
+            </div>
+          </div>
+         <p class="text-start">Info:<strong class="text-danger">*</strong> campos requeridos</p>
+          <hr class="mt-5 mb-3">
+          <button type="button" class="btn btn-primary col-md-2 col-7" id="save">
+            Guardar cambios
+          </button>
         </div>
       </div>
-      <div class="col-5">
-        <div>
-          Segundo nombre:
-        <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="">
-        </div>
-        <div>
-          Segundo apellido:
-        <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="">
-        </div>
-        <div>
-          Telefono:
-        <input type="number" name="profile" id="telefono" class="form-control mb-5" value="" required>
-        </div>
-        <div class="invalid-feedback">
-          Debes ingresar un numero de telefono, es obligatorio
-        </div>
-      </div>
-      <hr class="mt-5 mb-3">
-      <button type="button" class="btn btn-primary col-md-2 col-7" id="save">
-        Guardar cambios
-      </button>
-    </div>
-  </div>
-</form>
+    </form>
   </main>
   <footer class="text-muted">
     <div class="container">

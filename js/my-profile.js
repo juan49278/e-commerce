@@ -31,15 +31,55 @@ addEventListener('DOMContentLoaded', () => {
 })
 
 save.addEventListener('click', () => {
-    if(primerNombre.value != ""){
+    if(nombre() &&
+    apellido()&&
+    telephone() && nombre2()&& apellido2()){
+        alert('Guardado')
+    }
+})
+
+function nombre() {
+    if (primerNombre.value == "") {
+        primerNombre.classList.add('is-invalid')
+        return false
+    } else {
         primerNombre.classList.remove('is-invalid')
         primerNombre = localStorage.setItem("primerNombre", primerNombre.value)
-    } else {
-        primerNombre.classList.add('is-invalid')
+        return true
     }
-    
-    segundoNombre = localStorage.setItem("segundoNombre", segundoNombre.value)
-    primerApellido = localStorage.setItem("primerApellido", primerApellido.value)
-    segundoApellido = localStorage.setItem("segundoApellido", segundoApellido.value)
-    telefono = localStorage.setItem("telefono", telefono.value)
-})
+}
+
+function apellido() {
+    if (primerApellido.value == "") {
+        primerApellido.classList.add('is-invalid')
+        return false
+    } else {
+        primerApellido.classList.remove('is-invalid')
+        primerApellido = localStorage.setItem('primerApellido', primerApellido.value)
+        return true
+    }
+}
+function telephone() {
+    if (telefono.value == "") {
+        telefono.classList.add('is-invalid')
+        return false
+    } else {
+        telefono.classList.remove('is-invalid')
+        telefono = localStorage.setItem('telefono', telefono.value)
+        return true
+    }
+}
+function nombre2(){
+    if (segundoNombre.value != "") {
+        segundoNombre = localStorage.setItem('segundoNombre', segundoNombre.value)
+        return true
+    }
+    return false
+}
+function apellido2(){
+    if (segundoApellido != "") {
+        segundoApellido = localStorage.setItem('segundoApellido', segundoApellido.value)
+        return true
+    }
+    return false
+}
