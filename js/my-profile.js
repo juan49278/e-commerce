@@ -6,6 +6,9 @@ let segundoApellidoLocal = localStorage.getItem("segundoApellido")
 let telefonoLocal = localStorage.getItem("telefono")
 
 addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('imageProfile') !=""){
+        imgNew.src = localStorage.getItem('imageProfile')
+    }
     document.getElementById('email').value = email
     if (primerNombreLocal != "") {
         primerNombre.value = primerNombreLocal
@@ -68,5 +71,14 @@ function alertSuccess(){
         })
     }
 }
+
+document.querySelector('#imageUpload').addEventListener('change', function (){
+    const reader = new FileReader();
+    reader.addEventListener('load', ()=>{
+        localStorage.setItem('imageProfile', reader.result)
+    })
+    reader.readAsDataURL(this.files[0])
+    window.location.reload()
+})
 
 const swal = require ('sweetalert2');
