@@ -5,9 +5,13 @@ let primerApellidoLocal = localStorage.getItem("primerApellido")
 let segundoApellidoLocal = localStorage.getItem("segundoApellido")
 let telefonoLocal = localStorage.getItem("telefono")
 
+    
 addEventListener('DOMContentLoaded', () => {
-    if(localStorage.getItem('imageProfile') !=""){
-        imgNew.src = localStorage.getItem('imageProfile')
+  localStorage.setItem("imageDefault", "img/img_perfil.png")
+  if(!localStorage.getItem('imageProfile') ){
+        imgNew.src = localStorage.getItem('imageDefault')
+    } else {
+      imgNew.src = localStorage.getItem('imageProfile')
     }
     document.getElementById('email').value = email
     if (primerNombreLocal != "") {
