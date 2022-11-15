@@ -94,5 +94,5 @@ btnDelete.addEventListener('click', ()=>{
   } else {
   btnDelete.classList.remove('disabled')
 }
-}
+
 const swal = require ('sweetalert2');
