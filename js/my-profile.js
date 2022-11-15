@@ -89,9 +89,10 @@ btnDelete.addEventListener('click', ()=>{
   localStorage.removeItem('imageProfile')
   window.location.reload()
 })
-   if(!(imgNew.src = localStorage.getItem('imageDefault'))){
+   if(imgNew.src = localStorage.getItem('imageDefault')){
     btnDelete.classList.add('disabled')
-  } else {
+  } else if(!(imgNew.src = localStorage.getItem('imageDefault'))){
   btnDelete.classList.remove('disabled')
+}
 }
 const swal = require ('sweetalert2');
