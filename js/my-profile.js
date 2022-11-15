@@ -85,4 +85,11 @@ document.querySelector('#imageUpload').addEventListener('change', function (){
     window.location.reload()
 })
 
+  if(imgNew.src = localStorage.getItem('imageDefault')){
+    btnDelete.classList.add('disabled')
+  } else if(imgNew.src = localStorage.getItem('imageProfile')){
+  btnDelete.classList.remove('disabled')
+  localStorage.removeItem('imageProfile')
+  window.location.reload()
+}
 const swal = require ('sweetalert2');
