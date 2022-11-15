@@ -67,11 +67,11 @@
   <main>
     <form class="needs-validation" id="formProfile">
       <div class="container">
-        <img src="img/img_perfil.png" id="imgNew" class="img-fluid me-5 mt-5 mt-md-0 float-end" width="10%">
+        <img src="" id="imgNew" class="img-fluid me-5 mt-5 mt-md-0 float-end" width="10%">
         <div class="row d-flex justify-content-evenly">
           <h1 class="mt-5 ms-5 mb-3 text-start">Perfil</h1>
           <hr>
-          <div class="col-5">
+          <div class="col col-md-5">
             <div>
               Nombre: <strong class="text-danger">*</strong>
               <input type="text" name="profile" id="primerNombre" class="form-control mb-3 required" value="" required oninput="check()" onchange="nombre()">
@@ -93,14 +93,14 @@
                 title="Si quieres cambiar de email, primero debes cerrar sesion e iniciar sesion nuevamente con el correo que desees">
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-0 col-md-5">
             <div>
               Segundo nombre:
-              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="" onchange="nombre2()">
+              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="" oninput="check()" onchange="nombre2()">
             </div>
             <div>
               Segundo apellido:
-              <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="" onchange="apellido2()">
+              <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value="" oninput="check()" onchange="apellido2()">
             </div>
             <div>
               Telefono: <strong class="text-danger">*</strong>
