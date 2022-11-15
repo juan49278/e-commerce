@@ -91,7 +91,7 @@ btnDelete.addEventListener('click', ()=>{
 })
    if(imgNew.src = localStorage.getItem('imageDefault')){
     btnDelete.classList.add('disabled')
-  } else if(!(imgNew.src = localStorage.getItem('imageDefault'))){
+  } else {
   btnDelete.classList.remove('disabled')
 }
 }
