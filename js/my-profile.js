@@ -5,13 +5,13 @@ let primerApellidoLocal = localStorage.getItem("primerApellido")
 let segundoApellidoLocal = localStorage.getItem("segundoApellido")
 let telefonoLocal = localStorage.getItem("telefono")
 
-    
+
 addEventListener('DOMContentLoaded', () => {
-  localStorage.setItem("imageDefault", "img/img_perfil.png")
-  if(!localStorage.getItem('imageProfile') ){
+    localStorage.setItem("imageDefault", "img/img_perfil.png")
+    if (!localStorage.getItem('imageProfile')) {
         imgNew.src = localStorage.getItem('imageDefault')
     } else {
-      imgNew.src = localStorage.getItem('imageProfile')
+        imgNew.src = localStorage.getItem('imageProfile')
     }
     document.getElementById('email').value = email
     if (primerNombreLocal != "") {
@@ -49,25 +49,25 @@ function telephone() {
     let telefono = document.getElementById('telefono').value
     telefono = localStorage.setItem('telefono', telefono)
 }
-function nombre2(){
+function nombre2() {
     let segundoNombre = document.getElementById('segundoNombre').value
     segundoNombre = localStorage.setItem('segundoNombre', segundoNombre)
 }
-function apellido2(){
+function apellido2() {
     let segundoApellido = document.getElementById('segundoApellido').value
     segundoApellido = localStorage.setItem('segundoApellido', segundoApellido)
 }
-function check(){
-    input = document.querySelectorAll('input[name=profile]').forEach(input =>{
-        if(input.value !=""){
+function check() {
+    input = document.querySelectorAll('input[name=profile]').forEach(input => {
+        if (input.value != "") {
             input.classList.remove('is-invalid')
-        } else{
+        } else {
             input.classList.add('is-invalid')
         }
     })
 }
-function alertSuccess(){
-    if((primerNombre.value !="") && (primerApellido.value != "")&& (telefono.value !="")){
+function alertSuccess() {
+    if ((primerNombre.value != "") && (primerApellido.value != "") && (telefono.value != "")) {
         Swal.fire({
             title: 'Listo!',
             text: 'Los datos se actualizaron correctamente',
@@ -76,23 +76,23 @@ function alertSuccess(){
     }
 }
 
-document.querySelector('#imageUpload').addEventListener('change', function (){
+document.querySelector('#imageUpload').addEventListener('change', function () {
     const reader = new FileReader();
-    reader.addEventListener('load', ()=>{
+    reader.addEventListener('load', () => {
         localStorage.setItem('imageProfile', reader.result)
     })
     reader.readAsDataURL(this.files[0])
     window.location.reload()
 })
 
-btnDelete.addEventListener('click', ()=>{
-  localStorage.removeItem('imageProfile')
-  window.location.reload()
+btnDelete.addEventListener('click', () => {
+    localStorage.removeItem('imageProfile')
+    window.location.reload()
 })
-   if(imgNew.src = localStorage.getItem('imageDefault')){
+if (imgNew.src = localStorage.getItem('imageProfile')) {
+    btnDelete.classList.remove('disabled')
+} else {
     btnDelete.classList.add('disabled')
-  } else {
-  btnDelete.classList.remove('disabled')
 }
 
-const swal = require ('sweetalert2');
+const swal = require('sweetalert2');
