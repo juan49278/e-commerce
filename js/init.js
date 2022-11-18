@@ -39,8 +39,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+//Mostramos el email en el HTML traido del localstorage
 show.innerHTML = localStorage.getItem('email')
-
+//Funcion para cerrar sesion si es true borramos todo el localstorage
 document.getElementById('out').addEventListener('click', ()=>{
   let resultado = window.confirm('¿Quieres cerrar sesion?')
   if(resultado === true){
@@ -51,7 +52,7 @@ document.getElementById('out').addEventListener('click', ()=>{
   window.location.reload()
 }
 })
-
+//Si no estamos logueados nos lleva a la pagina del login
 if(!localStorage.getItem('loggedIn')){
 window.location.replace('login.html')
 }

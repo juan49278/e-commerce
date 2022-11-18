@@ -65,7 +65,7 @@
     </div>
   </nav>
   <main>
-    <form class="needs-validation" id="formProfile">
+    <form class="needs-validation" id="formProfile" novalidate>
       <div class="container">
         <img src="" id="imgNew" class="img-fluid me-5 mt-5 mt-md-0 float-end" width="12%">
         <div class="row d-flex justify-content-evenly">
@@ -74,16 +74,16 @@
           <div class="col col-md-5">
             <div>
               Nombre: <strong class="text-danger">*</strong>
-              <input type="text" name="profile" id="primerNombre" class="form-control mb-3 required" value="" required
-                oninput="check()" onchange="nombre()">
+              <input type="text" name="profile" id="primerNombre" class="form-control mb-3 required" value=""
+                placeholder="Ingresa tu nombre" required onchange="nombre()">
               <div class="invalid-feedback">
                 Debes ingresar un nombre
               </div>
             </div>
             <div>
               Apellido: <strong class="text-danger">*</strong>
-              <input type="text" name="profile" id="primerApellido" class="form-control mb-3 required" value="" required
-                oninput="check()" onchange="apellido()">
+              <input type="text" name="profile" id="primerApellido" class="form-control mb-3 required" value=""
+                placeholder="Ingresa tu apellido" required onchange="apellido()">
               <div class="invalid-feedback">
                 Debes ingresar el apellido
               </div>
@@ -98,18 +98,18 @@
           <div class="col-0 col-md-5">
             <div>
               Segundo nombre:
-              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value="" oninput="check()"
-                onchange="nombre2()">
+              <input type="text" name="profile" id="segundoNombre" class="form-control mb-3" value=""
+                placeholder="Opcional" onchange="nombre2()">
             </div>
             <div>
               Segundo apellido:
               <input type="text" name="profile" id="segundoApellido" class="form-control mb-3" value=""
-                oninput="check()" onchange="apellido2()">
+                placeholder="Opcional" onchange="apellido2()">
             </div>
             <div>
               Telefono: <strong class="text-danger">*</strong>
-              <input type="number" name="profile" id="telefono" class="form-control mb-5 required" value="" required
-                oninput="check()" onchange="telephone()">
+              <input type="number" name="profile" id="telefono" class="form-control mb-3" value=""
+                placeholder="Ingresa un numero de telefono" required onchange="telephone()">
               <div class="invalid-feedback">
                 Debes ingresar un numero de telefono
               </div>
@@ -120,7 +120,7 @@
           </div>
           <p class="text-start">Info:<strong class="text-danger">*</strong> campos requeridos</p>
           <hr class="mt-5 mb-3">
-          <button type="button" class="btn btn-primary col-md-2 col-7" id="save" onclick="check(),alertSuccess()">
+          <button type="submit" class="btn btn-primary col-md-2 col-7" id="save">
             Guardar cambios
           </button>
         </div>

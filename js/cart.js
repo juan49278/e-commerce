@@ -2,7 +2,6 @@ let url = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 let standarEnvio = document.getElementById('standardradio')
 let expressEnvio = document.getElementById('expressradio')
 let premiumEnvio = document.getElementById('premiumradio')
-let total = document.getElementById('totalCost')
 let div = document.getElementById('directionUncomplete')
 let div2 = document.getElementById('formDirection')
 let cant = function () {
@@ -15,7 +14,7 @@ let cant = function () {
         return true
     }
 }
-
+//Cargar los productos al cargar el DOM y ya calcular los subtotales
 addEventListener('DOMContentLoaded', async () => {
     showSpinner()
     let cartAdded = {}
@@ -32,7 +31,7 @@ addEventListener('DOMContentLoaded', async () => {
     cantCart();
     hideSpinner()
 })
-
+//Funcion para mostrar los productos
 function showCart(list) {
     cart.innerHTML = ""
     for (product of list) {
@@ -50,7 +49,7 @@ function showCart(list) {
         </tr>`
     }
 }
-
+//Funcion para calcular subtotales de productos y pasar a USD
 function calcular() {
     let campos = document.querySelectorAll('input.count');
     for (let i = 0; i < campos.length; i++) {
@@ -70,6 +69,7 @@ function calcular() {
         !cantCart()
     }
 }
+//Funcion para calcular comision de el envio
 addEventListener('input', () => {
     let spanResults = document.querySelectorAll(`span.result`);
     let resultado = 0;
@@ -92,7 +92,8 @@ addEventListener('input', () => {
     let totalCost = parseInt(comissionCost.innerText) + parseInt(productCosts.innerText)
     document.getElementById('totalCost').innerHTML = totalCost
 })
-
+//Funcion para seleccionar un metodo y deshabilitar el otro y ademas me diga
+//cual fue seleccionado fuera del modal
 function paymentMethod() {
     if (document.getElementById('account').checked) {
         document.querySelectorAll('.target').forEach(input => {
@@ -112,7 +113,7 @@ function paymentMethod() {
         methodBuy.innerHTML = 'Tarjeta de crédito'
     }
 }
-
+//Funcion para comprobar que este seleccionado un metodo de compra y que no esten vacio los campos
 function validationPayMethod() {
     error = 0
     document.querySelectorAll('input.target, input.account').forEach(input => {
@@ -124,7 +125,7 @@ function validationPayMethod() {
     return (error == 0 ? (method.classList.remove('is-invalid'), true) :
         false)
 }
-
+//Funcion que comprueba la cantidad ingresa si es 0 o menor me de invalido
 function cantCart() {
     document.querySelectorAll('input[name=unit]').forEach(input => {
         if ((input.value <= 0)) {
@@ -136,6 +137,7 @@ function cantCart() {
     })
     return true
 }
+//Funcion de checkeo de bootstrap
 (() => {
     let forms = document.querySelectorAll('.needs-validation');
     Array.prototype.slice.call(forms)
@@ -159,7 +161,7 @@ function cantCart() {
             },);
         });
 })()
-
+//Funcion para eliminar productos del carrito
 function deleteItem(id) {
     listActual = JSON.parse(localStorage.getItem('productoAdded'));
     listUpdate = listActual.filter(item => item.id != id);
@@ -171,6 +173,7 @@ function deleteItem(id) {
     showCart(listUpdate)
     calcular()
 }
+//Funcion de compra exitosa
 function showSuccess() {
     Swal.fire({
         title: 'Listo!',
@@ -178,6 +181,7 @@ function showSuccess() {
         icon: 'success'
     })
 }
+//Funcion para mostrar alerta de error en cantidad de producto
 function showErrorCant() {
     Swal.fire({
         title: 'Error',
@@ -185,7 +189,7 @@ function showErrorCant() {
         icon: 'error'
     })
 }
-
+//Funcion para checkear si el carrito está vacio
 function emptyCart() {
     Swal.fire({
         title: 'Info',
@@ -193,7 +197,7 @@ function emptyCart() {
         icon: 'info'
     })
 }
-
+//Funcion para checkear si todo esta ok entonces muestro la alerta de exito
 function finish() {
     check1 = validationPayMethod();
     check2 = document.querySelector('form.validate').noValidate

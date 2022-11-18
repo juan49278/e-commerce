@@ -5,7 +5,7 @@ const ORDER_DESC_BY_PRECIO = "costDown"
 const ORDER_BY_RELEVANCY = "Price"
 let miniumPrice = undefined;
 let maxiumPrice = undefined;
-
+//Cargamos el DOM con los productos del json
 document.addEventListener('DOMContentLoaded', async () => {
     let promise = await fetch(url);
     let datos = await promise.json()
@@ -35,7 +35,7 @@ document.getElementById("clearFilter").addEventListener("click", function () {
 
     showList();
 });
-
+//Filtramos por precio
 document.getElementById("filterPrice").addEventListener("click", function () {
     miniumPrice = document.getElementById("filterPriceMinium").value;
     maxiumPrice = document.getElementById("filterPriceMaxium").value;
@@ -56,6 +56,7 @@ document.getElementById("filterPrice").addEventListener("click", function () {
 
     showList();
 });
+//Mostramos la lista de productos 
 function showList() {
     let toAppened = []
     for (let product of productsList) {
@@ -82,7 +83,7 @@ function showList() {
         productsContainer.innerHTML = toAppened
     }
 }
-
+//Mostramos los productos ordenados segun se elija
 function sortAndShowProducts(criteria, elements) {
 
     const order = {
@@ -93,11 +94,12 @@ function sortAndShowProducts(criteria, elements) {
     productsList = order[criteria]();
     showList();
 }
-
+//Guardamos el ID de nuestro producto en el localstorage
 function idProducts(id) {
     localStorage.setItem('items', id)
     window.location.href = "product-info.html"
 }
+//Funcion para buscar en tiempo real
 document.getElementById('busca').addEventListener('input', (e) => {
     let search = e.target.value.split(' ');
     const listaElementos = document.querySelectorAll('.products');
